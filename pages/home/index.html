@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo Royale</title>
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        .linha {
+            display: flex;
+            margin: 10px 0px;
+            gap: 10px;
+            background-color: transparent;
+            border: 2px solid #fcfcfc;
+            padding: 10px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .quadrado {
+            width: 110px;
+            height: 110px;
+            border-radius: 8px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-align: center;
+            padding: 5px;
+            flex-direction: column;
+
+            font-size: 12px;
+        }
+
+        .linha:hover {
+            background-color: #4888FF;
+            border: 2px solid transparent;
+            transform: scale(1.04);
+        }
+
+        .verde {
+            background: #78FF4E !important;
+        }
+
+        .amarelo {
+            background: #FFD64E !important;
+        }
+
+        .vermelho {
+            background: #FF4E4E !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+
+        <header>
+
+            <div class="left">
+                <h1>termo royale<span>.</span></h1>
+            </div>
+
+            <div class="center">
+                    <a href="/pages/home/index.html">Clássico</a>
+                    <a href="/pages/carta/index.html">Carta</a>
+                    <a href="/pages/regras/index.html" target="_blank">Regras</a>
+            </div>
+
+            <div>
+                <p></p>
+            </div>
+
+        </header>
+
+        <div class="menu-center">
+
+                <div class="apresentation">
+                    <img src="/images/logo.png" alt="">
+                    <p>Olá, Seja bem-vindo ao <br> <span>Termo Royale</span></p>
+                </div>
+
+            <div class="guess-center">
+                <input id="nomeCarta" type="text" placeholder="Digite o nome da carta"
+                    onkeydown="if(event.key==='Enter'){jogar()}">
+                <img onclick="jogar()" src="/images/lupa.png" alt="">
+            </div>
+
+            <div class="titulos">
+                <p id="nome">Nome</p>
+                <p>Elixir</p>
+                <p>Imagem</p>
+                <p id="raridade">Raridade</p>
+                <p id="Evo">Evo</p>
+                <p id="heroi">Herói</p>
+            </div>
+
+            <div id="tentativas"></div>
+
+        </div>
+
+    </main>
+
+
+
+
+    <!-- <h2>TERMO – Clash Royale Edition</h2>
+
+    <input id="nomeCarta" type="text" placeholder="Digite o nome da carta" onkeydown="if(event.key==='Enter'){jogar()}">
+    <button onclick="jogar()">Enviar</button>
+
+    <div id="tentativas"></div> -->
+
+
+
+    <script src="pull.js"></script>
+
+    <script>
+
+        window.addEventListener("load", () => {
+            document.getElementById("popupVitoria").style.display = "none";
+        });
+
+        let jogoFinalizado = false;   // bloqueia após vitória
+        let resposta; // carta sorteada
+
+        // Sorteia 1 carta assim que o jogo inicia
+        window.onload = function () {
+            const total = allCards.items.length;
+            resposta = allCards.items[Math.floor(Math.random() * total)];
+            console.log("CARTA SECRETA:", resposta.name); // debug
+        };
+
+        function jogar() {
+
+            if (jogoFinalizado) return;
+
+            const nome = document.getElementById("nomeCarta").value.trim();
+
+            if (!nome) return;
+
+            const carta = allCards.items.find(c => c.name.toLowerCase() === nome.toLowerCase());
+
+            // ⛔ Se não encontrar carta, não deixa continuar
+            if (!carta) {
+                alert("Carta inválida! Tente novamente.");
+                return; // ← para aqui! Não cria tentativa
+            }
+
+            criarTentativa(carta);
+            document.getElementById("nomeCarta").value = "";
+        }
+
+
+        function criarTentativa(carta) {
+            const linha = document.createElement("div");
+            linha.classList.add("linha");
+
+            // Nome
+            const quadNome = criaQuadrado(carta ? carta.name : "???");
+
+            // Raridade
+            const quadRaridade = criaQuadrado(carta ? carta.rarity : "raridade nao encontrada");
+
+            // Elixir
+            const quadElixir = criaQuadrado(carta ? carta.elixirCost : "-");
+
+            // Ícone Padrão
+            const quadIcon = document.createElement("div");
+            quadIcon.classList.add("quadrado");
+            if (carta) {
+                let img = document.createElement("img");
+                img.src = carta.iconUrls.medium;
+                img.style.width = "50px";
+                quadIcon.appendChild(img);
+            } else {
+                quadIcon.textContent = "❌";
+            }
+
+            // Ícone Evo
+            // Ícone Evo (mostra se possui ou não)
+            const quadIconEvo = document.createElement("div");
+            quadIconEvo.classList.add("quadrado");
+
+            if (carta.iconUrls.evolutionMedium && carta.iconUrls.evolutionMedium.trim() !== "") {
+                quadIconEvo.textContent = "✔";
+                quadIconEvo.style.fontSize = "32px";
+                quadIconEvo.style.color = "green";
+            } else {
+                quadIconEvo.textContent = "❌";
+            }
+
+
+            // Ícone Heroica
+            const quadIconHeroica = document.createElement("div");
+            quadIconHeroica.classList.add("quadrado");
+
+            if (carta.iconUrls.heroMedium && carta.iconUrls.heroMedium.trim() !== "") {
+                quadIconHeroica.textContent = "✔";
+                quadIconHeroica.style.fontSize = "32px";
+                quadIconHeroica.style.color = "green";
+            } else {
+                quadIconHeroica.textContent = "❌";
+            }
+
+            // Adiciona quadrados à linha
+            linha.appendChild(quadNome);
+            linha.appendChild(quadElixir);
+            linha.appendChild(quadIcon);
+            linha.appendChild(quadRaridade);
+            linha.appendChild(quadIconEvo);
+            linha.appendChild(quadIconHeroica);
+
+            // Colore conforme o resultado
+            colorir(quadNome, quadElixir, quadIcon, quadRaridade, quadIconEvo, quadIconHeroica, carta);
+
+            // Adiciona na tela
+            document.getElementById("tentativas").prepend(linha);
+        }
+
+        function criaQuadrado(texto) {
+            const div = document.createElement("div");
+            div.classList.add("quadrado");
+            div.textContent = texto;
+            return div;
+        }
+
+        function colorir(nomeQuad, elixirQuad, iconQuad, RaridadeQuad, iconEvoQuad, iconHeroicaQuad, carta) {
+
+            if (carta.name === resposta.name) {
+                nomeQuad.classList.add("verde");
+                elixirQuad.classList.add("verde");
+                iconQuad.classList.add("verde");
+                RaridadeQuad.classList.add("verde");
+                iconEvoQuad.classList.add("verde");
+                iconHeroicaQuad.classList.add("verde");
+
+                jogoFinalizado = true; // ✅ Para o jogo
+                
+                abrirPopup();
+
+                return;
+            }
+
+            // Caso a carta não exista
+            if (!carta) {
+                nomeQuad.classList.add("vermelho");
+                elixirQuad.classList.add("vermelho");
+                iconQuad.classList.add("vermelho");
+                iconEvoQuad.classList.add("vermelho");
+                iconHeroicaQuad.classList.add("vermelho");
+                RaridadeQuad.classList.add("vermelho");
+                return;
+            }
+
+            // NOME
+            if (carta.name === resposta.name) {
+                nomeQuad.classList.add("verde");
+            } else if (carta.name[0] === resposta.name[0]) {
+                nomeQuad.classList.add("amarelo"); // exemplo de parcial
+            } else {
+                nomeQuad.classList.add("vermelho");
+            }
+
+            // ELIXIR
+            if (carta.elixirCost === resposta.elixirCost) {
+                elixirQuad.classList.add("verde");
+            } else if (Math.abs(carta.elixirCost - resposta.elixirCost) <= 1) {
+                elixirQuad.classList.add("amarelo");
+            } else {
+                elixirQuad.classList.add("vermelho");
+            }
+
+            // ÍCONE
+            if (carta.name === resposta.name) {
+                iconQuad.classList.add("verde");
+            } else {
+                iconQuad.classList.add("vermelho");
+            }
+
+            // EVO
+            const temEvo = carta.iconUrls.evolutionMedium && carta.iconUrls.evolutionMedium.trim() !== "";
+            const respostaTemEvo = resposta.iconUrls.evolutionMedium && resposta.iconUrls.evolutionMedium.trim() !== "";
+
+            // Acertou a carta!
+            if (carta.name === resposta.name) {
+                iconEvoQuad.textContent = respostaTemEvo ? "✔" : "✖";
+                iconEvoQuad.classList.add("verde");
+            } else {
+                // Se ambos têm evo OU ambos não têm evo → verde
+                if (temEvo === respostaTemEvo) {
+                    iconEvoQuad.classList.add("verde");
+                } else {
+                    iconEvoQuad.classList.add("vermelho");
+                }
+            }
+
+
+
+            // HEROICO
+            const temHero = carta.iconUrls.heroMedium && carta.iconUrls.heroMedium.trim() !== "";
+            const respostaTemHero = resposta.iconUrls.heroMedium && resposta.iconUrls.heroMedium.trim() !== "";
+
+            // Acertou a carta
+            if (carta.name === resposta.name) {
+                iconHeroicaQuad.textContent = respostaTemHero ? "✔" : "✖";
+                iconHeroicaQuad.classList.add("verde");
+            } else {
+                // CORREÇÃO AQUI! → verde quando AMBOS têm OU AMBOS NÃO têm heroico
+                if (temHero === respostaTemHero) {
+                    iconHeroicaQuad.classList.add("verde");
+                } else {
+                    iconHeroicaQuad.classList.add("vermelho");
+                }
+            }
+
+
+
+
+
+            //Raridade
+            if (carta.rarity === resposta.rarity) {
+                RaridadeQuad.classList.add("verde");
+            } else {
+                RaridadeQuad.classList.add("vermelho");
+            }
+
+
+
+        }
+
+        function abrirPopup() {
+            document.getElementById("popupVitoria").style.display = "flex";
+        }
+
+        function fecharPopup() {
+            document.getElementById("popupVitoria").style.display = "none";
+        }
+
+        function irParaJogoDaCarta() {
+            window.location.href = "/pages/carta/index.html";
+        }
+
+    </script>
+
+    <div id="popupVitoria" class="popup">
+        <div class="popup-content">
+            <h1>Parabéns</h1>
+            <p>Você acertou a carta secreta!</p>
+            <button onclick="irParaRegras()"> Ir para o próximo jogo </button>
+            <button onclick="fecharPopup()">Fechar</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
