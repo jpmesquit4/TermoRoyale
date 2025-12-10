@@ -412,21 +412,21 @@ header > .center > a:hover{
     }
 }
 
-@media (max-width: 288px) {
+@media (max-width: 320px) {
 
     .linha {
         flex-wrap: wrap;
         justify-content: center;
-        padding: 2px;
-        gap: 5px;
-        width: 400px;
+        padding: 0px !important;
+        gap: 1px !important;
+        border: 1px solid #fcfcfc;
     }
 
     .quadrado {
         width: 1px !important;
         height: 1px !important;
-        font-size: 2px !important;
-        padding: 3px;
+        font-size: 1px !important;
+        padding: 1px;
     }
 
     .menu-center > .titulos > p {
