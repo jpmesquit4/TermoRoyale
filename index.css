@@ -412,6 +412,28 @@ header > .center > a:hover{
     }
 }
 
+@media (max-width: 288px) {
+
+    .linha {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 2px;
+        gap: 5px;
+        width: 400px;
+    }
+
+    .quadrado {
+        width: 1px !important;
+        height: 1px !important;
+        font-size: 2px !important;
+        padding: 3px;
+    }
+
+    .menu-center > .titulos > p {
+        font-size: 8px !important;
+    }
+}
+
 @media (max-width: 450px) {
 
     header {
