@@ -331,7 +331,90 @@ header > .center > a:hover{
 
 }
 
+@media (max-width: 732px) {
 
+    header {
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 10px;
+        text-align: center;
+    }
+
+    header > .center {
+        position: static;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .left h1 {
+        font-size: 20px;
+    }
+
+    /* Input responsivo */
+    .guess-center > input {
+        width: 90%;
+        max-width: 350px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .guess-center {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Ícone de pesquisa */
+    .search-icon {
+        right: 225px !important;
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Títulos responsivos */
+    .titulos {
+        width: 90%;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .titulos > p {
+        font-size: 12px;
+    }
+
+    /* Pop-up responsivo */
+    .popup-content {
+        width: 85%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .linha {
+        flex-wrap: wrap;       /* permite quebrar linha */
+        justify-content: center;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .quadrado {
+        width: 60px !important;           /* menor para caber no mobile */
+        height: 60px !important;
+        font-size: 8px !important;
+        padding: 3px;
+    }
+
+    /* Hover não aplica no mobile (opcional) */
+    .linha:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
 
 
 /* ======== MOBILE (até 768px) ======== */
@@ -570,6 +653,53 @@ header > .center > a:hover{
         transform: none;
         box-shadow: none;
     }
+}
+
+
+@media (max-width: 730px) {
+
+    .search-icon {
+            left: 69% !important;
+            width: 22px;
+            height: 22px;
+        }
+
+}
+
+@media (max-width: 462px) {
+
+
+/* O problema era o width fixo de 270px + gaps */
+.linha {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+width: 100% !important; /* ocupa a largura total sem quebrar */
+max-width: 100%;
+gap: 2px !important;
+padding: 2px !important;
+margin: 0 !important;
+}
+
+.search-icon {
+        left: 80% !important;
+        width: 22px;
+        height: 22px;
+    }
+
+
+.quadrado {
+width: 52px !important;
+height: 52px !important;
+font-size: 6px !important;
+padding: 0 !important;
+}
+
+
+.menu-center > .titulos > p {
+font-size: 8px !important;
+}
 }
 
 @media (max-width: 350px) {
