@@ -384,8 +384,8 @@ header > .center > a:hover{
     }
 
     .quadrado {
-        width: 52px !important;
-        height: 52px !important;
+        width: 45px !important;
+        height: 45px !important;
         font-size: 6px !important;
         padding: 3px;
     }
@@ -463,9 +463,9 @@ header > .center > a:hover{
     }
 
     .quadrado {
-        width: 62px;
-        height: 62px;
-        font-size: 8px;
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 6px !important;
         padding: 3px;
     }
 
