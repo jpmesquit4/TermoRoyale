@@ -374,7 +374,7 @@ header > .center > a:hover{
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 414px) {
 
     header {
         flex-wrap: wrap;
