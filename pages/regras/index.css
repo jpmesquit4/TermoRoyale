@@ -186,6 +186,7 @@ header > .center > a:hover{
     transform: scale(1.04);
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
     border: 2px solid transparent;
+    cursor: pointer;
 }
 
 .bt-baixar:active {

@@ -18,7 +18,7 @@
             border-radius: 10px;
             transition: 0.3s;
         }
-
+        
         .quadrado {
             width: 110px;
             height: 110px;
@@ -31,14 +31,15 @@
             text-align: center;
             padding: 5px;
             flex-direction: column;
-
+            
             font-size: 12px;
         }
-
+        
         .linha:hover {
             background-color: #4888FF;
             border: 2px solid transparent;
             transform: scale(1.04);
+            box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
         }
 
         .verde {
@@ -85,9 +86,12 @@
                 </div>
 
             <div class="guess-center">
-                <input id="nomeCarta" type="text" placeholder="Digite o nome da carta"
+                <input id="nomeCarta" autocomplete="off" type="text" placeholder="Digite o nome da carta"
                     onkeydown="if(event.key==='Enter'){jogar()}">
-                <img onclick="jogar()" src="/images/lupa.png" alt="">
+                
+                <button onclick="jogar()" class="search-icon">
+                    <img src="/images/lupa.png" alt="">
+                </button>
             </div>
 
             <div class="titulos">
@@ -106,17 +110,6 @@
     </main>
 
 
-
-
-    <!-- <h2>TERMO – Clash Royale Edition</h2>
-
-    <input id="nomeCarta" type="text" placeholder="Digite o nome da carta" onkeydown="if(event.key==='Enter'){jogar()}">
-    <button onclick="jogar()">Enviar</button>
-
-    <div id="tentativas"></div> -->
-
-
-
     <script src="pull.js"></script>
 
     <script>
@@ -132,7 +125,7 @@
         window.onload = function () {
             const total = allCards.items.length;
             resposta = allCards.items[Math.floor(Math.random() * total)];
-            //console.log("CARTA SECRETA:", resposta.name); // debug
+            console.log("CARTA SECRETA:", resposta.name); // debug
         };
 
         function jogar() {
@@ -351,7 +344,9 @@
         <div class="popup-content">
             <h1>Parabéns</h1>
             <p>Você acertou a carta secreta!</p>
-            <button onclick="irParaRegras()"> Ir para o próximo jogo </button>
+            <a href="/pages/carta/index.html">
+                <button> Ir para o próximo jogo </button>
+            </a>
             <button onclick="fecharPopup()">Fechar</button>
         </div>
     </div>

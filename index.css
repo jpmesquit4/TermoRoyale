@@ -7,6 +7,10 @@
     font-family: 'Poppins';
 }
 
+body {
+    background-color: #1A191A;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -87,8 +91,38 @@ header > .center > a:hover{
 
 
 .guess-center { 
-
+    position: relative;
     margin-top: 20px;
+}
+
+.guess-center input {
+  width: 100%;
+  height: 38px;
+  padding-left: 40px;
+  box-sizing: border-box;
+}
+
+/* NÃO move nada porque está absolute */
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  /* evita alterar o tamanho do input */
+  height: 20px;
+  width: 20px;
+}
+
+.search-icon img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .guess-center > input {
@@ -200,7 +234,6 @@ header > .center > a:hover{
     background-color: transparent;
     transition: 0.3s;
     color: #1A191A;
-    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 }
 
 .popup-content button:active {
@@ -223,6 +256,8 @@ header > .center > a:hover{
     color: #fcfcfc;
     border: 2px solid transparent;
     transform: scale(1.04);
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 }
 
 .popup-content a {
@@ -244,3 +279,88 @@ header > .center > a:hover{
     to { transform: scale(1); opacity: 1; }
 }
 
+/* ======== MOBILE (até 768px) ======== */
+@media (max-width: 768px) {
+
+    header {
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 10px;
+        text-align: center;
+    }
+
+    header > .center {
+        position: static;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .left h1 {
+        font-size: 20px;
+    }
+
+    /* Input responsivo */
+    .guess-center > input {
+        width: 90%;
+        max-width: 350px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .guess-center {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Ícone de pesquisa */
+    .search-icon {
+        right: 85px;
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Títulos responsivos */
+    .titulos {
+        width: 90%;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .titulos p {
+        font-size: 12px;
+    }
+
+    /* Pop-up responsivo */
+    .popup-content {
+        width: 85%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .linha {
+        flex-wrap: wrap;       /* permite quebrar linha */
+        justify-content: center;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .quadrado {
+        width: 65px;           /* menor para caber no mobile */
+        height: 65px;
+        font-size: 8px;
+        padding: 3px;
+    }
+
+    /* Hover não aplica no mobile (opcional) */
+    .linha:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
