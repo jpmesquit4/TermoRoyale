@@ -571,3 +571,33 @@ header > .center > a:hover{
         box-shadow: none;
     }
 }
+
+@media (max-width: 350px) {
+
+
+/* O problema era o width fixo de 270px + gaps */
+.linha {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+width: 100% !important; /* ocupa a largura total sem quebrar */
+max-width: 100%;
+gap: 2px !important;
+padding: 2px !important;
+margin: 0 !important;
+}
+
+
+.quadrado {
+width: 42px !important;
+height: 42px !important;
+font-size: 6px !important;
+padding: 0 !important;
+}
+
+
+.menu-center > .titulos > p {
+font-size: 8px !important;
+}
+}
