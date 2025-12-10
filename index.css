@@ -342,7 +342,7 @@ header > .center > a:hover{
         text-align: center;
     }
 
-    .titulos p {
+    .titulos > p {
         font-size: 12px;
     }
 
@@ -388,6 +388,27 @@ header > .center > a:hover{
         height: 45px !important;
         font-size: 6px !important;
         padding: 3px;
+    }
+}
+
+@media (max-width: 352px) {
+
+    .linha {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .quadrado {
+        width: 25px !important;
+        height: 25px !important;
+        font-size: 6px !important;
+        padding: 3px;
+    }
+
+    .menu-center > .titulos > p {
+        font-size: 10px !important;
     }
 }
 
