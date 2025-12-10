@@ -419,14 +419,14 @@ header > .center > a:hover{
         justify-content: center;
         padding: 0px !important;
         gap: 1px !important;
-        border: 1px solid #fcfcfc;
+        border: 1px solid #fcfcfc !important;
     }
 
     .quadrado {
         width: 1px !important;
         height: 1px !important;
         font-size: 1px !important;
-        padding: 1px;
+        padding: 0px !important;
     }
 
     .menu-center > .titulos > p {
