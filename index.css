@@ -374,7 +374,24 @@ header > .center > a:hover{
     }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 411px) {
+
+    .linha {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .quadrado {
+        width: 52px;
+        height: 52px;
+        font-size: 6px;
+        padding: 3px;
+    }
+}
+
+@media (max-width: 450px) {
 
     header {
         flex-wrap: wrap;
