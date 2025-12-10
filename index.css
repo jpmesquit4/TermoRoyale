@@ -288,6 +288,52 @@ header > .center > a:hover{
     }
 }
 
+@media (max-width: 460px) {
+
+    .linhas {
+        gap: 5px !important;
+    }
+
+    .quadrado {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 9px !important;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .search-icon {
+        left: 68%;
+        width: 22px;
+        height: 22px;
+    }
+
+}
+
+@media (max-width: 390px) {
+
+    .search-icon {
+        left: 85%;
+        width: 22px;
+        height: 22px;
+    }
+
+}
+
+@media (max-width: 458px) {
+
+    .search-icon {
+        left: 80%;
+        width: 22px;
+        height: 22px;
+    }
+
+}
+
+
+
+
 /* ======== MOBILE (até 768px) ======== */
 @media (max-width: 768px) {
 
@@ -328,7 +374,7 @@ header > .center > a:hover{
 
     /* Ícone de pesquisa */
     .search-icon {
-        right: 85px;
+        right: 225px !important;
         width: 22px;
         height: 22px;
     }
@@ -412,14 +458,17 @@ header > .center > a:hover{
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 300px) {
 
     .linha {
-        flex-wrap: wrap;
+        display: flex;
         justify-content: center;
+        align-items: center;
         padding: 0px !important;
         gap: 1px !important;
         border: 1px solid #fcfcfc !important;
+        margin: 0px !important;
+        width: 270px;
     }
 
     .quadrado {
@@ -427,6 +476,11 @@ header > .center > a:hover{
         height: 1px !important;
         font-size: 1px !important;
         padding: 0px !important;
+    }
+
+    .vermelho {
+        width: 5px !important;
+        height: 5px !important;
     }
 
     .menu-center > .titulos > p {

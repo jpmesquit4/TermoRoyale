@@ -53,6 +53,33 @@
         .vermelho {
             background: #FF4E4E !important;
         }
+
+        @media (max-width: 300px) {
+        
+            .quad-img {
+    width: 30px !important;      /* tamanho do ícone */
+    height: auto !important;
+            }
+
+        .verde {
+            background: #78FF4E !important;
+            width: 42px !important;
+            height: 42px !important;
+        }
+
+        .amarelo {
+            background: #FFD64E !important;
+            width: 42px !important;
+            height: 42px !important;
+        }
+
+        .vermelho {
+            background: #FF4E4E !important;
+            width: 42px !important;
+            height: 42px !important;
+        }
+
+        }
     </style>
 </head>
 
@@ -168,7 +195,8 @@
             if (carta) {
                 let img = document.createElement("img");
                 img.src = carta.iconUrls.medium;
-                img.style.width = "20px";
+                img.style.width = "40px";
+                img.classList.add("quad-img");
                 quadIcon.appendChild(img);
             } else {
                 quadIcon.textContent = "❌";
