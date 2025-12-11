@@ -168,7 +168,7 @@
         window.onload = function () {
             const total = allCards.items.length;
             resposta = allCards.items[Math.floor(Math.random() * total)];
-            console.log("CARTA SECRETA:", resposta.name); // debug
+            //console.log("CARTA SECRETA:", resposta.name); // debug
         };
 
         function jogar() {
@@ -393,7 +393,7 @@
         <div class="popup-content">
             <h1>Parabéns</h1>
             <p>Você acertou a carta secreta!</p>
-            <button onclick="tentarNovamente">Tentar novamente</button>
+            <button onclick="tentarNovamente()">Tentar novamente</button>
             <a href="/pages/carta/index.html">
                 <button> Ir para o próximo jogo </button>
             </a>
