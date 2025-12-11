@@ -194,3 +194,99 @@ header > .center > a:hover{
     color: #1A191A;
     transform: scale(1);
 }
+
+/* ====== MOBILE (até 768px) ====== */
+@media (max-width: 768px) {
+
+    header {
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+    }
+
+    header > .center {
+        position: static;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .left > h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    /* Containers principais */
+    .menu-center {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bolas,
+    .nomenclatura {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .menu-blue {
+        width: 100%;
+        font-size: 14px;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .menu-blue nav {
+        width: 35px;
+        height: 35px;
+        margin-right: 15px;
+    }
+
+    .nomenclatura .mids {
+        bottom: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mids > .mid {
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .bt-baixar {
+        width: 200px;
+        height: 55px;
+        font-size: 14px;
+    }
+}
+
+/* ====== MOBILE PEQUENO (até 480px) ====== */
+@media (max-width: 480px) {
+
+    header {
+        padding: 15px;
+    }
+
+    header > .center > a {
+        font-size: 14px;
+    }
+
+    .bolas,
+    .nomenclatura {
+        width: 95%;
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .nomenclatura h1 {
+        font-size: 18px;
+        line-height: 16px;
+    }
+
+    .bt-baixar {
+        width: 200px;
+        height: 50px;
+        font-size: 13px;
+    }
+}
+

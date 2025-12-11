@@ -217,7 +217,7 @@ header > .center > a:hover{
     border-radius: 15px;
     text-align: center;
     width: 500px;
-    height: 300px;
+    height: 400px;
     animation: abrir .4s ease;
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 }
@@ -274,6 +274,10 @@ header > .center > a:hover{
     margin-top: 0;
 }
 
+.quad-img {
+    width: 50px !important;
+}
+
 @keyframes abrir {
     from { transform: scale(0.5); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
@@ -285,6 +289,10 @@ header > .center > a:hover{
         width: 70px;
         height: 70px;
         font-size: 9px;
+    }
+
+    .quad-img {
+        width: 30px !important;
     }
 }
 
@@ -299,6 +307,10 @@ header > .center > a:hover{
         height: 50px !important;
         font-size: 9px !important;
     }
+
+    .quad-img {
+        width: 30px !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -307,6 +319,10 @@ header > .center > a:hover{
         left: 68%;
         width: 22px;
         height: 22px;
+    }
+
+    .quad-img {
+        width: 40px !important;
     }
 
 }
@@ -319,6 +335,10 @@ header > .center > a:hover{
         height: 22px;
     }
 
+    .quad-img {
+        width: 30px !important;
+    }
+
 }
 
 @media (max-width: 458px) {
@@ -327,6 +347,10 @@ header > .center > a:hover{
         left: 80%;
         width: 22px;
         height: 22px;
+    }
+
+    .quad-img {
+        width: 30px !important;
     }
 
 }
@@ -414,11 +438,19 @@ header > .center > a:hover{
         transform: none;
         box-shadow: none;
     }
+
+    .quad-img {
+        width: 40px !important;
+    }
 }
 
 
 /* ======== MOBILE (até 768px) ======== */
 @media (max-width: 768px) {
+
+    .quad-img {
+        width: 40px !important;
+    }
 
     header {
         flex-wrap: wrap;
@@ -505,6 +537,10 @@ header > .center > a:hover{
 
 @media (max-width: 393px) {
 
+    .quad-img {
+        width: 30px !important;
+    }
+
     .linha {
         flex-wrap: wrap;
         justify-content: center;
@@ -521,6 +557,10 @@ header > .center > a:hover{
 }
 
 @media (max-width: 352px) {
+
+    .quad-img {
+        width: 30px !important;
+    }
 
     .linha {
         flex-wrap: wrap;
@@ -542,6 +582,10 @@ header > .center > a:hover{
 }
 
 @media (max-width: 300px) {
+
+    .quad-img {
+        width: 30px !important;
+    }
 
     .linha {
         display: flex;
@@ -572,6 +616,10 @@ header > .center > a:hover{
 }
 
 @media (max-width: 450px) {
+
+    .quad-img {
+        width: 30px !important;
+    }
 
     header {
         flex-wrap: wrap;
@@ -668,6 +716,9 @@ header > .center > a:hover{
 
 @media (max-width: 462px) {
 
+    .quad-img {
+        width: 30px !important;
+    }
 
 /* O problema era o width fixo de 270px + gaps */
 .linha {

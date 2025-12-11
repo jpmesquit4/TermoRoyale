@@ -105,7 +105,7 @@
             <div class="center">
                     <a href="index.html">Clássico</a>
                     <a href="/pages/carta/index.html">Carta</a>
-                    <a href="/pages/regras/index.html" target="_blank">Regras</a>
+                    <a href="/pages/regras/index.html" target="_blank">Como jogar</a>
             </div>
 
             <div>
@@ -150,6 +150,13 @@
 
     <script>
 
+        function normalizar(str) {
+            return str.normalize("NFD")        // separa letras dos acentos
+                    .replace(/[\u0300-\u036f]/g, "") // remove acentos
+                    .toLowerCase();
+        }
+
+
         window.addEventListener("load", () => {
             document.getElementById("popupVitoria").style.display = "none";
         });
@@ -161,7 +168,7 @@
         window.onload = function () {
             const total = allCards.items.length;
             resposta = allCards.items[Math.floor(Math.random() * total)];
-            //console.log("CARTA SECRETA:", resposta.name); // debug
+            console.log("CARTA SECRETA:", resposta.name); // debug
         };
 
         function jogar() {
@@ -172,7 +179,8 @@
 
             if (!nome) return;
 
-            const carta = allCards.items.find(c => c.name.toLowerCase() === nome.toLowerCase());
+            const carta = allCards.items.find(c => normalizar(c.name) === normalizar(nome));
+
 
             // ⛔ Se não encontrar carta, não deixa continuar
             if (!carta) {
@@ -371,6 +379,10 @@
             document.getElementById("popupVitoria").style.display = "none";
         }
 
+        function tentarNovamente() {
+            location.reload(true);
+        }
+
         function irParaJogoDaCarta() {
             window.location.href = "/pages/carta/index.html";
         }
@@ -381,6 +393,7 @@
         <div class="popup-content">
             <h1>Parabéns</h1>
             <p>Você acertou a carta secreta!</p>
+            <button onclick="tentarNovamente">Tentar novamente</button>
             <a href="/pages/carta/index.html">
                 <button> Ir para o próximo jogo </button>
             </a>
