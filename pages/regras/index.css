@@ -7,6 +7,10 @@
     font-family: 'Poppins';
 }
 
+body {
+    background-color: #1A191A;
+}
+
 main {
     display: flex;
     flex-direction: column;
