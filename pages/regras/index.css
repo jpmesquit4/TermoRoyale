@@ -224,3 +224,99 @@ header > .center > a:hover{
     background-color: transparent;
 }
 
+@media (max-width: 900px) {
+    header {
+        padding: 20px;
+        height: auto;
+    }
+
+    header > .center {
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .menu-center {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .como-jogar {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media (max-width: 655px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px 10px;
+    }
+
+    .left > h1 {
+        font-size: 20px;
+    }
+
+    header > .center {
+        position: relative;
+        left: 0;
+        transform: none;
+        margin-top: 10px;
+    }
+
+    .como-jogar {
+        padding: 20px;
+    }
+
+    .card-quad,
+    .card-quad-amarelo,
+    .card-quad-evo-heroi {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card-quad-amarelo div p,
+    .card-quad-amarelo div span,
+    .card-quad p,
+    .part-left .quad p {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .sig-quad nav {
+        width: 40px;
+        height: 40px;
+    }
+
+    .part-left {
+        margin-top: 15px;
+    }
+
+    #amarelo {
+        align-self: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .left > h1 {
+        font-size: 18px;
+    }
+
+    header > .center > a {
+        font-size: 12px;
+    }
+
+    .como-jogar h1 {
+        font-size: 16px;
+    }
+
+    .como-jogar-classico h5 {
+        font-size: 12px;
+    }
+
+    .como-jogar-classico p {
+        font-size: 11px;
+    }
+}
+
+
