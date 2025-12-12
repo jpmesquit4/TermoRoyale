@@ -160,37 +160,18 @@ header > .center > a:hover{
 
 
 .titulos {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 80px;
-    width: 500px;
-    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(50px, 1fr));
+    text-align: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 20px;
 }
-
-.titulos > p {
-    font-size: 12px;
+.titulos p {
     color: #fcfcfc;
-}
-
-#nome {
-    position: relative;
-    right: 10px;
-}
-
-#raridade {
-    position: relative;
-    right: 13px;
-}
-
-#Evo {
-    position: relative;
-    right: 10px;
-}
-
-#heroi {
-    position: relative;
-    left: 5px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .popup {
@@ -278,507 +259,199 @@ header > .center > a:hover{
     width: 50px !important;
 }
 
+.linha {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(70px, 110px));
+            margin: 10px 0px;
+            gap: 10px;
+            background-color: transparent;
+            border: 2px solid #fcfcfc;
+            padding: 10px;
+            border-radius: 10px;
+            transition: 0.3s;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+.quadrado {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-width: 70px;   /* igual ao minmax da linha */
+    max-width: 110px;  /* igual ao minmax da linha */
+    font-size: clamp(12px, 1.4vw, 8px);
+    border-radius: 8px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    flex-direction: column;
+}
+
+
+.quadrado img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+        
+        .linha:hover {
+            background-color: #4888FF;
+            border: 2px solid transparent;
+            transform: scale(1.04);
+            box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+        }
+
+        .verde {
+            background: #78FF4E !important;
+        }
+
+        .amarelo {
+            background: #FFD64E !important;
+        }
+
+        .vermelho {
+            background: #FF4E4E !important;
+        }
+
 @keyframes abrir {
     from { transform: scale(0.5); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
 
-@media (max-width: 450px) {
-
-    .quadrado {
-        width: 70px;
-        height: 70px;
-        font-size: 9px;
-    }
-
-    .quad-img {
-        width: 30px !important;
-    }
-}
-
-@media (max-width: 460px) {
-
-    .linhas {
-        gap: 5px !important;
-    }
-
-    .quadrado {
-        width: 50px !important;
-        height: 50px !important;
-        font-size: 9px !important;
-    }
-
-    .quad-img {
-        width: 30px !important;
-    }
-}
-
-@media (max-width: 767px) {
-
-    .search-icon {
-        left: 68%;
-        width: 22px;
-        height: 22px;
-    }
-
-    .quad-img {
-        width: 40px !important;
-    }
-
-}
-
-@media (max-width: 390px) {
-
-    .search-icon {
-        left: 85%;
-        width: 22px;
-        height: 22px;
-    }
-
-    .quad-img {
-        width: 30px !important;
-    }
-
-}
-
-@media (max-width: 458px) {
-
-    .search-icon {
-        left: 80%;
-        width: 22px;
-        height: 22px;
-    }
-
-    .quad-img {
-        width: 30px !important;
-    }
-
-}
-
-@media (max-width: 732px) {
+/* ======== RESPONSIVIDADE - MOBILE (até 540px) ======== */
+@media (max-width: 540px) {
 
     header {
-        flex-wrap: wrap;
-        flex-direction: column;
-        height: auto;
         padding: 20px;
-        gap: 10px;
-        text-align: center;
+        height: auto;
+        flex-direction: column;
+        gap: 15px;
     }
 
     header > .center {
         position: static;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 10px;
+        gap: 10px;
     }
 
-    .left h1 {
+    header > .center > a {
+        font-size: 14px;
+    }
+
+    .left > h1 {
         font-size: 20px;
+        text-align: center;
     }
 
-    /* Input responsivo */
+    /* Centralização geral */
+    .menu-center {
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+
+    .apresentation p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .apresentation p span {
+        font-size: 28px;
+    }
+
+    /* INPUT */
+    .guess-center {
+        width: 100%;
+        margin-top: 25px;
+        padding: 0 15px;
+    }
+
     .guess-center > input {
-        width: 90%;
-        max-width: 350px;
+        width: 100%;
         height: 50px;
+        padding-left: 15px;
         font-size: 16px;
     }
 
-    .guess-center {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-
-    /* Ícone de pesquisa */
+    /* Ícone de pesquisa dentro do input */
     .search-icon {
-        right: 225px !important;
-        width: 22px;
-        height: 22px;
+        right: 30px;
+        width: 18px;
+        height: 18px;
     }
 
-    /* Títulos responsivos */
+    /* Títulos da grid */
     .titulos {
-        width: 90%;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .titulos > p {
-        font-size: 12px;
-    }
-
-    /* Pop-up responsivo */
-    .popup-content {
-        width: 85%;
-        height: auto;
-        padding: 20px;
-    }
-
-    .linha {
-        flex-wrap: wrap;       /* permite quebrar linha */
-        justify-content: center;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .quadrado {
-        width: 60px !important;           /* menor para caber no mobile */
-        height: 60px !important;
-        font-size: 8px !important;
-        padding: 3px;
-    }
-
-    /* Hover não aplica no mobile (opcional) */
-    .linha:hover {
-        transform: none;
-        box-shadow: none;
-    }
-
-    .quad-img {
-        width: 40px !important;
-    }
-}
-
-
-/* ======== MOBILE (até 768px) ======== */
-@media (max-width: 768px) {
-
-    .quad-img {
-        width: 40px !important;
-    }
-
-    header {
-        flex-wrap: wrap;
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
-        gap: 10px;
-        text-align: center;
-    }
-
-    header > .center {
-        position: static;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 10px;
-    }
-
-    .left h1 {
-        font-size: 20px;
-    }
-
-    /* Input responsivo */
-    .guess-center > input {
-        width: 90%;
-        max-width: 350px;
-        height: 50px;
-        font-size: 16px;
-    }
-
-    .guess-center {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-
-    /* Ícone de pesquisa */
-    .search-icon {
-        right: 225px !important;
-        width: 22px;
-        height: 22px;
-    }
-
-    /* Títulos responsivos */
-    .titulos {
-        width: 90%;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .titulos > p {
-        font-size: 12px;
-    }
-
-    /* Pop-up responsivo */
-    .popup-content {
-        width: 85%;
-        height: auto;
-        padding: 20px;
-    }
-
-    .linha {
-        flex-wrap: wrap;       /* permite quebrar linha */
-        justify-content: center;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .quadrado {
-        width: 65px;           /* menor para caber no mobile */
-        height: 65px;
-        font-size: 8px;
-        padding: 3px;
-    }
-
-    /* Hover não aplica no mobile (opcional) */
-    .linha:hover {
-        transform: none;
-        box-shadow: none;
-    }
-}
-
-@media (max-width: 393px) {
-
-    .quad-img {
-        width: 30px !important;
-    }
-
-    .linha {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 5px;
-        gap: 5px;
-    }
-
-    .quadrado {
-        width: 45px !important;
-        height: 45px !important;
-        font-size: 6px !important;
-        padding: 3px;
-    }
-}
-
-@media (max-width: 352px) {
-
-    .quad-img {
-        width: 30px !important;
-    }
-
-    .linha {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 5px;
-        gap: 5px;
-    }
-
-    .quadrado {
-        width: 25px !important;
-        height: 25px !important;
-        font-size: 6px !important;
-        padding: 3px;
-    }
-
-    .menu-center > .titulos > p {
-        font-size: 10px !important;
-    }
-}
-
-@media (max-width: 300px) {
-
-    .quad-img {
-        width: 30px !important;
-    }
-
-    .linha {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0px !important;
-        gap: 1px !important;
-        border: 1px solid #fcfcfc !important;
-        margin: 0px !important;
-        width: 270px;
-    }
-
-    .quadrado {
-        width: 1px !important;
-        height: 1px !important;
-        font-size: 1px !important;
-        padding: 0px !important;
-    }
-
-    .vermelho {
-        width: 5px !important;
-        height: 5px !important;
-    }
-
-    .menu-center > .titulos > p {
-        font-size: 8px !important;
-    }
-}
-
-@media (max-width: 450px) {
-
-    .quad-img {
-        width: 30px !important;
-    }
-
-    header {
-        flex-wrap: wrap;
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
-        gap: 10px;
-        text-align: center;
-    }
-
-    header > .center {
-        position: static;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 10px;
-    }
-
-    .left h1 {
-        font-size: 20px;
-    }
-
-    /* Input responsivo */
-    .guess-center > input {
-        width: 90%;
-        max-width: 350px;
-        height: 50px;
-        font-size: 10px;
-    }
-
-    .guess-center {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-
-    /* Ícone de pesquisa */
-    .search-icon {
-        right: 45px;
-        width: 22px;
-        height: 22px;
-    }
-
-    /* Títulos responsivos */
-    .titulos {
-        width: 90%;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
+        grid-template-columns: repeat(6, 1fr); /* 6 → 3 colunas no mobile */
+        max-width: 100%;
+        padding: 0 10px;
     }
 
     .titulos p {
-        font-size: 12px;
+        font-size: 10px;
     }
 
-    /* Pop-up responsivo */
+    /* POPUP */
     .popup-content {
-        width: 85%;
+        width: 90%;
         height: auto;
         padding: 20px;
     }
 
+    .popup-content h1 {
+        font-size: 22px;
+    }
+
+    .popup-content p {
+        font-size: 14px;
+    }
+
+    .popup-content button {
+        width: 70%;
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .quad-img {
+        width: 40px !important;
+    }
+
     .linha {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 5px;
-        gap: 5px;
+        grid-template-columns: repeat(6, minmax(40px, 70px));
+        gap: 6px;
+        padding: 6px;
     }
 
     .quadrado {
-        width: 52px !important;
-        height: 52px !important;
-        font-size: 6px !important;
+        min-width: 50px;
+        max-width: 70px;
+        font-size: clamp(7px, 3vw, 10px);
         padding: 3px;
     }
 
-    .linha:hover {
-        transform: none;
-        box-shadow: none;
-    }
 }
 
-
-@media (max-width: 730px) {
-
-    .search-icon {
-            left: 69% !important;
-            width: 22px;
-            height: 22px;
-        }
-
-}
-
-@media (max-width: 462px) {
-
-    .quad-img {
-        width: 30px !important;
+@media (max-width: 480px) {
+    .linha {
+        grid-template-columns: repeat(6, minmax(40px, 70px));
+        gap: 6px;
+        padding: 6px;
     }
 
-/* O problema era o width fixo de 270px + gaps */
-.linha {
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-width: 100% !important; /* ocupa a largura total sem quebrar */
-max-width: 100%;
-gap: 2px !important;
-padding: 2px !important;
-margin: 0 !important;
-}
-
-.search-icon {
-        left: 80% !important;
-        width: 22px;
-        height: 22px;
+    .quadrado {
+        min-width: 40px;
+        max-width: 70px;
+        font-size: clamp(5px, 1vw, 2px) !important;
+        padding: 3px;
     }
 
-
-.quadrado {
-width: 52px !important;
-height: 52px !important;
-font-size: 6px !important;
-padding: 0 !important;
-}
-
-
-.menu-center > .titulos > p {
-font-size: 8px !important;
-}
-}
-
-@media (max-width: 350px) {
-
-
-/* O problema era o width fixo de 270px + gaps */
-.linha {
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-width: 100% !important; /* ocupa a largura total sem quebrar */
-max-width: 100%;
-gap: 2px !important;
-padding: 2px !important;
-margin: 0 !important;
-}
-
-
-.quadrado {
-width: 42px !important;
-height: 42px !important;
-font-size: 6px !important;
-padding: 0 !important;
-}
-
-
-.menu-center > .titulos > p {
-font-size: 8px !important;
-}
+    .titulos p {
+        font-size: 7px;
+    }
 }
