@@ -65,232 +65,162 @@ header > .center > a:hover{
     flex-direction: row;
     justify-content: center;
 
-    gap: 20px;
+    width: 100%;
+    height: 100%;
+    gap: 15px;
+    padding: 15px 15px;
+
 }
 
-.bolas {
+.como-jogar {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    background-color: #fcfcfc;
-    padding: 30px;
+    background-color: #4888FF;
+    width: 50%;
+    height: 50%;
+
     border-radius: 10px;
-    gap: 30px;
-    width: 450px;
-    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+    padding: 30px;
 }
 
-.menu-blue nav {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    margin-right: 30px;
-    border-radius: 100px;
+.como-jogar-classico {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
 }
 
-#amarela {
+.como-jogar h1 {
+    font-size: 20px;
+    color: #fcfcfc;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.como-jogar-classico h5 {
+    font-size: 14px;
+    color: #fcfcfc;
+    font-weight: 500;
+}
+
+
+.como-jogar-classico p {
+    font-size: 12px;
+    color: #fcfcfc;
+    font-weight: 300;
+}
+
+.sig-quad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.card-quad-amarelo {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 10px;
+    background-color: #1A191A;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+.card-quad-amarelo div p {
+    font-size: 10px;
+    font-weight: 300;
+    width: 180px;
+    color: #fcfcfc;
+}
+
+.card-quad-amarelo div span {
+    font-size: 10px;
+    font-weight: 500;
+    width: 180px;
+    color: #fcfcfc;
+}
+
+#amarelo {
     background-color: #FFD64E;
 }
 #verde {
     background-color: #78FF4E;
 }
-#vermelha {
+#vermelho {
     background-color: #FF4E4E;
 }
 
-.menu-blue {
+.sig-quad nav {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-quad {
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    background-color: #4888FF;
+    justify-content: start;
+    background-color: #1A191A;
     width: 100%;
-    padding: 20px;
     border-radius: 10px;
-    color: #fcfcfc;
+    padding: 20px;
+    gap: 10px;
+}
+
+.card-quad p {
+    font-size: 10px;
     font-weight: 300;
-    font-size: 12px;
-    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
-    transition: 0.3s;
+    width: 180px;
+    color: #fcfcfc;
 }
 
-.menu-blue:hover {
-    transform: scale(1.04);
-}
-
-.nomenclatura {
+.card-quad-evo-heroi {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
 
-    background-color: #4888FF;
-    padding: 30px;
+    background-color: #1A191A;
+    padding: 20px;
     border-radius: 10px;
-    gap: 30px;
-    width: 450px;
-    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+    width: 100%;
 }
 
-.nomenclatura h1 {
-    font-size: 20px;
-    font-weight: 800;
-    text-align: center;
-    line-height: 18px;
-    color: #fcfcfc;
-}
-
-.nomenclatura > .mids {
+.card-quad-evo-heroi .part-left {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    
-    position: relative;
-    bottom: 80px;
-
 }
 
-.mids > .mid {
-    font-size: 12px;
-    font-weight: 400;
-    text-align: left;
-    color: #fcfcfc;
+.part-left {
+    gap: 15px;
 }
 
-.arquivo {
+.part-left .quad {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    gap: 15px;
 }
 
-.arquivo .bot {
-    text-align: center;
-    font-size: 14px;
-    font-weight: 400;
+.part-left .quad p {
+    font-size: 10px;
+    font-weight: 500;
+    width: 180px;
     color: #fcfcfc;
-    line-height: 14px;
 }
 
-.bt-baixar {
-    border: 2px solid #fcfcfc;
-
-    width: 300px;
-    height: 60px;
-    border-radius: 100px;
-    margin: 10px 0px;
+#como-jogar-carta {
     background-color: transparent;
-    color: #fcfcfc;
-    transition: 0.3s;
-}
-
-.bt-baixar:hover {
-    background-color: #fcfcfc;
-    color: #1A191A;
-    transform: scale(1.04);
-    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
-    border: 2px solid transparent;
-    cursor: pointer;
-}
-
-.bt-baixar:active {
-    background-color: #c0c0c0;
-    color: #1A191A;
-    transform: scale(1);
-}
-
-/* ====== MOBILE (até 768px) ====== */
-@media (max-width: 768px) {
-
-    header {
-        padding: 20px;
-        flex-direction: column;
-        gap: 20px;
-        height: auto;
-    }
-
-    header > .center {
-        position: static;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .left > h1 {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    /* Containers principais */
-    .menu-center {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .bolas,
-    .nomenclatura {
-        width: 90%;
-        padding: 20px;
-    }
-
-    .menu-blue {
-        width: 100%;
-        font-size: 14px;
-        padding: 15px;
-        gap: 10px;
-    }
-
-    .menu-blue nav {
-        width: 35px;
-        height: 35px;
-        margin-right: 15px;
-    }
-
-    .nomenclatura .mids {
-        bottom: 0;
-        align-items: center;
-        text-align: center;
-    }
-
-    .mids > .mid {
-        width: 100%;
-        text-align: center;
-        font-size: 13px;
-    }
-
-    .bt-baixar {
-        width: 200px;
-        height: 55px;
-        font-size: 14px;
-    }
-}
-
-/* ====== MOBILE PEQUENO (até 480px) ====== */
-@media (max-width: 480px) {
-
-    header {
-        padding: 15px;
-    }
-
-    header > .center > a {
-        font-size: 14px;
-    }
-
-    .bolas,
-    .nomenclatura {
-        width: 95%;
-        padding: 15px;
-        gap: 20px;
-    }
-
-    .nomenclatura h1 {
-        font-size: 18px;
-        line-height: 16px;
-    }
-
-    .bt-baixar {
-        width: 200px;
-        height: 50px;
-        font-size: 13px;
-    }
 }
 

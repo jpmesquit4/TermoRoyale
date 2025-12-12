@@ -25,54 +25,76 @@
         </header>
 
         <div class="menu-center">
-            <div class="bolas">
-                <div class="menu-blue">
-                    <div class="bola">
-                        <nav id="amarela"></nav>
-                    </div>
-
-                    <div class="bola-text">
-                        <p>Nome parcial: Se a primeira letra da carta digitada for igual à primeira letra da carta secreta.</p>
-                        <p> <br> Custo de elixir parcial: Se o custo da carta estiver a 1 de diferença</p>
-                    </div>
+            <div class="como-jogar">
+                <div class="como-jogar-classico">
+                    <h1>Como jogar: Modo Clássico</h1>
+                    <h5>Uma carta foi sorteada e você precisa descobri-la. Siga os passos abaixo:</h5>
+                    <p>- Digite o nome da carta que você acredita ser a carta sorteada.</p>
+                    <p>- Os nomes das cartas devem ser escritos exatamente como aparecem no jogo original.</p>
+                    <p>- Acima de cada quadrado estará o nome do respectivo atributo. </p>
+                    <p>- Os quadrantes Evo e Herói indicam se a carta possui forma de Evolução ou forma Heroica.</p>
                 </div>
 
-                <div class="menu-blue">
-                    <div class="bola">
+                <div class="sig-quad">
+                    <h1>Significado de cada quadrado</h1>
+
+                    <div class="card-quad-amarelo">
+                        <nav id="amarelo"></nav>
+
+                        <div>
+                            <p><span>Nome parcial:</span> Se a primeira letra da carta digitada for igual à primeira letra da carta secreta. </p>
+                        </div>
+
+                        <div>
+                            <p><span>Custo de elixir parcial:</span> Se o custo da carta estiver a 1 de diferença</p>
+                        </div>
+                    </div>
+
+                    <div class="card-quad">
                         <nav id="verde"></nav>
+
+                        <p>Você acertou uma das respostas</p>
                     </div>
 
-                    <div class="bola-text">
-                        <p>Você acertou duas das respostas</p>
-                    </div>
-                </div>
+                    <div class="card-quad">
+                        <nav id="vermelho"></nav>
 
-                <div class="menu-blue">
-                    <div class="bola">
-                        <nav id="vermelha"></nav>
+                        <p>Você errou uma das respostas</p>
                     </div>
 
-                    <div class="bola-text">
-                        <p>Você errou umas das respostas</p>
+                    <div class="card-quad-evo-heroi">
+                        <div class="part-left">
+                            <div class="quad">
+                                <nav id="vermelho">❌</nav>
+                                <p>A carta que voce digitou nao tem evo/herói, mas a sorteada tem.</p>
+                            </div>
+
+                            <div class="quad">
+                                <nav id="vermelho">✔</nav>
+                                <p>A carta que voce digitou tem tem evo/herói, mas a sorteada não tem.</p>
+                            </div>
+                        </div>
+
+                        <div class="part-left">
+                            <div class="quad">
+                                <nav id="verde">❌</nav>
+                                <p>A carta que você digitou não tem evo/herói e a sorteada também não.</p>
+                            </div>
+
+                            <div class="quad">
+                                <nav id="verde">✔</nav>
+                                <p>A carta que você digitou tem evo/herói e a sorteada também tem.</p>
+                            </div>
+                        </div>
                     </div>
+
+
+
                 </div>
             </div>
 
-            <div class="nomenclatura">
-                <h1>Como digitar corretamente <br> o nome das cartas</h1>
+            <div id="como-jogar-carta" class="como-jogar">
 
-                <div class="mids">
-                    <p class="mid">- Maiúsculas e minúsculas não são necessárias.</p>
-                    <p class="mid">- Escreva com acento e espaçamento no seu devido lugar.</p>
-                </div>
-
-                <div class="arquivo">
-                    <p class="bot">Baixe esse arquivo, contém o <br> nome de todas as cartas do jogo.</p>
-                    <a href="/AllCards.txt">
-                        <button class="bt-baixar">Baixar</button>
-                    </a>
-                    <p class="bot">Caso tenha alguma errada, encaminhar ao suporte.</p>
-                </div>
             </div>
         </div>
     </main>
