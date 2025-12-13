@@ -1,17 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta</title>
+    <title>Jogo da Carta</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
+
     <main>
-        <h1>404</h1>
-        <p>Em produção...</p>
+
+        <header>
+
+            <div class="left">
+                <h1>termo royale<span>.</span></h1>
+            </div>
+
+            <div class="center">
+                    <a href="/index.html">Clássico</a>
+                    <a href="/pages/carta/index.html">Carta</a>
+                    <a href="/pages/regras/index.html" target="_blank">Como jogar</a>
+            </div>
+
+            <div class="right">
+                <p></p>
+            </div>
+
+        </header>
+
+        <div class="menu-center">
+            <div>
+
+        </div>
+
+        <div id="meio">
+            <img id="cartaSorteadaImg" src="" alt="Carta">
+
+            <div class="input-wrapper">
+                <input id="nomeCarta" autocomplete="off" type="text" placeholder="Digite o nome da carta"
+                    onkeydown="if(event.key==='Enter'){jogar()}">
+
+                <button onclick="jogar()" class="search-icon">
+                    <img src="/images/lupa.png" alt="">
+                </button>
+            </div>
+
+            <div id="tentativas"></div>
+        </div>
+
+        <div class="dicas">
+            <h1>Dicas</h1>
+            <div id="infoRaridade"></div>
+            <div id="infoElixir"></div>
+        </div>
+        </div>
+
+        <div id="popup" class="popup hidden">
+            <div class="popup-content">
+                <h2 id="popupTitle"></h2>
+                <p id="popupText"></p>
+                <button onclick="fecharPopup()">OK</button>
+                <button id="btnReload" class="hidden" onclick="window.location.reload(true)">Tentar novamente</button>
+            </div>
+        </div>
+        
     </main>
+
+    <script src="/pull.js"></script>
+
+    <script>
+        let jogoFinalizado = false;
+        let resposta;
+        let tentativas = 0;
+
+        let cartasTentadas = new Set();
+
+        function normalizar(str) {
+            return str.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+        }
+
+        window.onload = function () {
+            const total = allCards.items.length;
+            resposta = allCards.items[Math.floor(Math.random() * total)];
+            document.getElementById("cartaSorteadaImg").src = resposta.iconUrls.medium;
+        };
+
+        function jogar() {
+            if (jogoFinalizado) return;
+
+            const entrada = document.getElementById("nomeCarta").value.trim();
+            if (!entrada) return;
+
+            const carta = allCards.items.find(c => normalizar(c.name) === normalizar(entrada));
+
+            if (!carta) {
+                mostrarPopup(
+                    "Carta inválida",
+                    "Essa carta não existe. Verifique o nome e tente novamente.",
+                    "erro"
+                );
+                return;
+            }
+
+            registrarTentativa(carta);
+            document.getElementById("nomeCarta").value = "";
+        }
+
+        function registrarTentativa(carta) {
+
+            if (cartasTentadas.has(carta.id)) {
+                mostrarPopup(
+                    "Carta repetida",
+                    "Você já tentou essa carta. Escolha outra.",
+                    "erro"
+                );
+                return;
+            }
+
+            cartasTentadas.add(carta.id);
+
+            tentativas++;
+
+            // Revelar raridade na 2ª tentativa
+            if (tentativas === 2) {
+            const raridade = document.getElementById("infoRaridade");
+            raridade.style.display = "block";
+            raridade.innerText = "Raridade: " + resposta.rarity;
+            }
+
+        // 5ª tentativa → elixir
+        if (tentativas === 5) {
+            const elixir = document.getElementById("infoElixir");
+            elixir.style.display = "block";
+            elixir.innerText = "Custo de Elixir: " + resposta.elixirCost;
+        }
+
+    const log = document.createElement("div");
+    log.classList.add("linha");
+    log.innerHTML = `<span>${carta.name}</span><span>${tentativas}º</span>`;
+    document.getElementById("tentativas").prepend(log);
+
+    ajustarBlur();
+
+    if (carta.id === resposta.id) {
+        jogoFinalizado = true;
+        document.getElementById("cartaSorteadaImg").style.filter = "none";
+
+
+
+        mostrarPopup(
+        "Vitória!",
+        `Parabéns! Você acertou a carta em ${tentativas} tentativas.`,
+        "vitoria"
+    );
+    }
+}
+
+
+        function ajustarBlur() {
+    const img = document.getElementById("cartaSorteadaImg");
+
+    // Antes de 10 tentativas, não muda nada
+    if (tentativas < 10) {
+        img.style.filter = "grayscale(100%) blur(16px)";
+        return;
+    }
+
+    // Após 10 tentativas, começa a reduzir
+    const tentativasApos10 = tentativas - 10;
+
+    // A cada 2 tentativas = 1 etapa
+    const etapas = Math.floor(tentativasApos10 / 2);
+
+    // Diminui 20% de grayscale e 2px de blur por etapa
+    const grayscale = Math.max(100 - etapas * 5, 0);
+    const blur = Math.max(8 - etapas * 2, 0);
+
+    img.style.filter = `grayscale(${grayscale}%) blur(${blur}px)`;
+}
+
+    function mostrarPopup(titulo = "", texto = "", tipo = "erro") {
+        const popup = document.getElementById("popup");
+        const content = popup.querySelector(".popup-content");
+        const btnReload = document.getElementById("btnReload");
+
+        // RESET TOTAL
+        btnReload.classList.add("hidden");
+        btnReload.style.display = "none";
+
+        document.getElementById("popupTitle").innerText = titulo;
+        document.getElementById("popupText").innerText = texto;
+
+        content.classList.remove("erro", "vitoria");
+        content.classList.add(tipo);
+
+        if (tipo === "vitoria") {
+            btnReload.classList.remove("hidden");
+            btnReload.style.display = "inline-flex";
+        }
+
+        popup.classList.remove("hidden");
+    }
+
+
+
+
+
+function fecharPopup() {
+    document.getElementById("popup").classList.add("hidden");
+}
+
+
+
+    </script>
 
 </body>
 </html>

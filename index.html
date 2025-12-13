@@ -19,7 +19,7 @@
             </div>
 
             <div class="center">
-                    <a href="index.html">Clássico</a>
+                    <a href="/index.html">Clássico</a>
                     <a href="/pages/carta/index.html">Carta</a>
                     <a href="/pages/regras/index.html" target="_blank">Como jogar</a>
             </div>
@@ -100,8 +100,12 @@
 
             // ⛔ Se não encontrar carta, não deixa continuar
             if (!carta) {
-                alert("Carta inválida! Tente novamente.");
-                return; // ← para aqui! Não cria tentativa
+                mostrarPopup(
+                    "Carta inválida",
+                    "Essa carta não existe. Verifique o nome e tente novamente.",
+                    "erro"
+                );
+                return;
             }
 
             criarTentativa(carta);
@@ -199,7 +203,11 @@
 
                 jogoFinalizado = true; // ✅ Para o jogo
                 
-                abrirPopup();
+                mostrarPopup(
+                    "Vitória!",
+                    `Você acertou a carta secreta em <strong>${tentativasFeitas}</strong> tentativas!`,
+                    "vitoria"
+                );
 
                 return;
             }
@@ -291,37 +299,56 @@
 
         }
 
-        function abrirPopup() {
-            document.getElementById("popupVitoria").style.display = "flex";
-            const popup = document.querySelector("#popupVitoria .popup-content p");
-            popup.innerHTML = `Você acertou a carta secreta em <strong>${tentativasFeitas}</strong> tentativas!`;
+        function mostrarPopup(titulo = "", texto = "", tipo = "erro") {
+            const popup = document.getElementById("popup");
+            const content = popup.querySelector(".popup-content");
+
+            const btnReiniciar = document.getElementById("btnReiniciar");
+            const btnFechar = document.getElementById("btnFechar");
+
+            document.getElementById("popupTitle").innerText = titulo;
+            document.getElementById("popupText").innerHTML = texto;
+
+            content.classList.remove("erro", "vitoria");
+            content.classList.add(tipo);
+
+            // 🔥 CONTROLE DOS BOTÕES
+            if (tipo === "vitoria") {
+                btnReiniciar.style.display = "inline-block";
+                btnFechar.style.display = "inline-block";
+            } else {
+                btnReiniciar.style.display = "none";
+                btnFechar.style.display = "inline-block";
+            }
+
+            popup.classList.remove("hidden");
         }
+
+
 
         function fecharPopup() {
-            document.getElementById("popupVitoria").style.display = "none";
+            document.getElementById("popup").classList.add("hidden");
         }
 
-        function tentarNovamente() {
-            location.reload(true);
-        }
 
-        function irParaJogoDaCarta() {
-            window.location.href = "/pages/carta/index.html";
-        }
+
+
 
     </script>
 
-    <div id="popupVitoria" class="popup">
+    <div id="popup" class="popup hidden">
         <div class="popup-content">
-            <h1>Parabéns</h1>
-            <p>Você acertou a carta secreta!</p>
-            <button onclick="tentarNovamente()">Tentar novamente</button>
-            <a href="/pages/carta/index.html">
-                <button> Ir para o próximo jogo </button>
-            </a>
-            <button onclick="fecharPopup()">Fechar</button>
+            <h2 id="popupTitle"></h2>
+            <p id="popupText"></p>
+
+            <div class="popup-buttons">
+                <button id="btnFechar" onclick="fecharPopup()">Fechar</button>
+                <button id="btnReiniciar" onclick="location.reload()">Tentar novamente</button>
+            </div>
         </div>
     </div>
+
+
 
 </body>
 

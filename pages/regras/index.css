@@ -78,6 +78,7 @@ header > .center > a:hover{
     align-items: center;
 
     background-color: #4888FF;
+    min-height: 102vh;
     width: 50%;
     height: 50%;
 
@@ -104,6 +105,7 @@ header > .center > a:hover{
     font-size: 14px;
     color: #fcfcfc;
     font-weight: 500;
+    margin-bottom: 5px;
 }
 
 
@@ -223,6 +225,8 @@ header > .center > a:hover{
 #como-jogar-carta {
     background-color: transparent;
 }
+
+
 
 @media (max-width: 900px) {
     header {

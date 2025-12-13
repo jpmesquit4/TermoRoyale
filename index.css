@@ -174,86 +174,66 @@ header > .center > a:hover{
     font-weight: bold;
 }
 
+/*--------------------------- pop-up --------------------------------*/
+
+.popup-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
 .popup {
-    display: none; /* invisível no início */
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(3px);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
 }
 
+.popup.hidden {
+    display: none;
+}
+
 .popup-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: #fcfcfc;
-    padding: 25px 35px;
-    border-radius: 15px;
+    background: #111;
+    color: #fff;
+    padding: 24px;
+    border-radius: 12px;
     text-align: center;
-    width: 500px;
-    height: 400px;
-    animation: abrir .4s ease;
-    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+    min-width: 280px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
 .popup-content button {
-    align-self: center;
-    margin-top: 20px;
-    border-radius: 50px;
+    margin-top: 16px;
+    padding: 8px 20px;
     border: none;
-    outline: none;
-    width: 250px;
-    height: 50px;
-    border: 2px solid #1A191A;
-    background-color: transparent;
-    transition: 0.3s;
-    color: #1A191A;
-}
-
-.popup-content button:active {
-    transform: scale(1) !important;
-    background-color: #000 !important;
-}
-
-.popup-content h1 {
-    color: #1A191A;
-    font-weight: 800;
-}
-
-.popup-content p {
-    color: #1A191A;
-    font-weight: 500;
-}
-
-.popup-content button:hover {
-    background-color: #1A191A;
-    color: #fcfcfc;
-    border: 2px solid transparent;
-    transform: scale(1.04);
+    border-radius: 6px;
+    background: #f5c518;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 }
 
-.popup-content a {
-    text-decoration: none;
-    color: #1A191A;
+/* Variações */
+.popup-content.erro {
+    border: 2px solid #ff4c4c;
 }
 
-.popup-content a:hover {
-    text-decoration: none;
-    color: #4888FF
+.popup-content.vitoria {
+    border: 2px solid #4cff88;
 }
 
-.popup-content h2 {
-    margin-top: 0;
+.popup-content.vitoria h2 {
+    color: #4cff88;
 }
+
+.popup-content.erro h2 {
+    color: #ff4c4c;
+}
+
 
 .quad-img {
     width: 50px !important;
