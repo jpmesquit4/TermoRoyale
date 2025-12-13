@@ -414,6 +414,12 @@ header > .center > a:hover{
         padding: 3px;
     }
 
+
+    .popup-buttons button {
+        color: #1A191A;
+
+    }
+
 }
 
 @media (max-width: 480px) {
