@@ -308,6 +308,10 @@ header > .center > a:hover{
 /* ======== RESPONSIVIDADE - MOBILE (até 540px) ======== */
 @media (max-width: 540px) {
 
+    .quad-img {
+        width: 30px !important;
+    }
+
     header {
         padding: 20px;
         height: auto;
@@ -417,6 +421,11 @@ header > .center > a:hover{
 }
 
 @media (max-width: 480px) {
+
+    .popup-buttons button {
+        font-size: 10px;
+    }
+
     .linha {
         grid-template-columns: repeat(6, minmax(40px, 70px));
         gap: 6px;
