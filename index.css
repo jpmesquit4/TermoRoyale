@@ -236,7 +236,7 @@ header > .center > a:hover{
 
 
 .quad-img {
-    width: 50px !important;
+    width: 30px !important;
 }
 
 .linha {
@@ -399,10 +399,6 @@ header > .center > a:hover{
         width: 70%;
         height: 45px;
         font-size: 15px;
-    }
-
-    .quad-img {
-        width: 40px !important;
     }
 
     .linha {
