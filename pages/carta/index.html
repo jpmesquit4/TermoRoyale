@@ -34,7 +34,7 @@
         </div>
 
         <div id="meio">
-            <img id="cartaSorteadaImg" src="" alt="Carta">
+            <img id="cartaSorteadaImg" draggable="false" oncontextmenu="return false;" style="user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;" src="" alt="Carta">
 
             <div class="input-wrapper">
                 <input id="nomeCarta" autocomplete="off" type="text" placeholder="Digite o nome da carta"
@@ -173,7 +173,7 @@
     const etapas = Math.floor(tentativasApos10 / 2);
 
     // Diminui 20% de grayscale e 2px de blur por etapa
-    const grayscale = Math.max(100 - etapas * 5, 0);
+    const grayscale = Math.max(100 - etapas * 20, 0);
     const blur = Math.max(8 - etapas * 2, 0);
 
     img.style.filter = `grayscale(${grayscale}%) blur(${blur}px)`;
