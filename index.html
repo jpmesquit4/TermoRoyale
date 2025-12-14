@@ -69,7 +69,7 @@
         function normalizar(str) {
             return str.normalize("NFD")        // separa letras dos acentos
                     .replace(/[\u0300-\u036f]/g, "") // remove acentos
-                    .replace(/\./g, "") 
+                    .replace(/[.\-]/g, "") //remove ponto e hifen
                     .toLowerCase()
                     .trim();
         }
