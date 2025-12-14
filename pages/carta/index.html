@@ -79,7 +79,7 @@
             return str
             .normalize("NFD")
             .replace(/\p{Diacritic}/gu, "") // remove acentos
-            .replace(/[.\-]/g, "")           // remove APENAS pontos e hifen
+            .replace(/[^a-z0-9]/gi, "")      // remove tudo que não é letra/número
             .toLowerCase()
             .trim();
         }

@@ -67,9 +67,10 @@
     <script>
 
         function normalizar(str) {
-            return str.normalize("NFD")        // separa letras dos acentos
+            return str
+                    .normalize("NFD")
                     .replace(/[\u0300-\u036f]/g, "") // remove acentos
-                    .replace(/[.\-]/g, "") //remove ponto e hifen
+                    .replace(/[^a-z0-9]/gi, "")      // remove tudo que não é letra/número
                     .toLowerCase()
                     .trim();
         }
