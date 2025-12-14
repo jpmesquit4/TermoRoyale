@@ -120,8 +120,20 @@ header > .center > a:hover{
 
 #cartaSorteadaImg {
     width: 180px;
-    filter: grayscale(100%) blur(16px);
+    height: 300px;
+    filter: grayscale(100%) blur(30px);
     transition: filter 0.4s ease-in-out;
+
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+
+    pointer-events: none; /* MUITO IMPORTANTE */
 }
 
 input {
@@ -140,6 +152,7 @@ input {
 
 .linha {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 10px;
     background: #4888FF;
@@ -148,6 +161,10 @@ input {
     font-size: 14px;
     width: 100% !important;
     color: #fcfcfc;
+}
+
+.icones {
+    font-size: 1.2rem;
 }
 
 .dicas {

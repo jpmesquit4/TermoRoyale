@@ -34,7 +34,7 @@
         </div>
 
         <div id="meio">
-            <img id="cartaSorteadaImg" draggable="false" oncontextmenu="return false;" style="user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;" src="" alt="Carta">
+            <div id="cartaSorteadaImg"></div>
 
             <div class="input-wrapper">
                 <input id="nomeCarta" autocomplete="off" type="text" placeholder="Digite o nome da carta"
@@ -73,16 +73,22 @@
         let resposta;
         let tentativas = 0;
 
-        let cartasTentadas = new Set();
+        let cartasTentadas = [];
 
         function normalizar(str) {
-            return str.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+            return str
+            .normalize("NFD")
+            .replace(/\p{Diacritic}/gu, "") // remove acentos
+            .replace(/\./g, "")             // remove APENAS pontos
+            .toLowerCase()
+            .trim();
         }
 
         window.onload = function () {
             const total = allCards.items.length;
             resposta = allCards.items[Math.floor(Math.random() * total)];
-            document.getElementById("cartaSorteadaImg").src = resposta.iconUrls.medium;
+            document.getElementById("cartaSorteadaImg").style.backgroundImage =
+            `url('${resposta.iconUrls.medium}')`;
         };
 
         function jogar() {
@@ -91,7 +97,19 @@
             const entrada = document.getElementById("nomeCarta").value.trim();
             if (!entrada) return;
 
-            const carta = allCards.items.find(c => normalizar(c.name) === normalizar(entrada));
+            const entradaNormalizada = normalizar(entrada);
+
+            const carta = allCards.items.find(c => {
+                const nomeCarta = normalizar(c.name);
+
+                // Caso especial: O Tronco
+                if (nomeCarta === "o tronco" && entradaNormalizada === "tronco") {
+                    return true;
+                }
+
+                return nomeCarta === entradaNormalizada;
+            });
+
 
             if (!carta) {
                 mostrarPopup(
@@ -108,16 +126,16 @@
 
         function registrarTentativa(carta) {
 
-            if (cartasTentadas.has(carta.id)) {
-                mostrarPopup(
-                    "Carta repetida",
-                    "Você já tentou essa carta. Escolha outra.",
-                    "erro"
-                );
-                return;
-            }
+            // Verifica se já tentou essa carta
+const similares = calcularSimilaridade(carta, resposta);
 
-            cartasTentadas.add(carta.id);
+cartasTentadas.push({
+    carta,
+    similares,
+    score: similares.length // usado para ordenação
+});
+
+
 
             tentativas++;
 
@@ -135,10 +153,7 @@
             elixir.innerText = "Custo de Elixir: " + resposta.elixirCost;
         }
 
-    const log = document.createElement("div");
-    log.classList.add("linha");
-    log.innerHTML = `<span>${carta.name}</span><span>${tentativas}º</span>`;
-    document.getElementById("tentativas").prepend(log);
+    renderizarTentativas();
 
     ajustarBlur();
 
@@ -162,7 +177,7 @@
 
     // Antes de 10 tentativas, não muda nada
     if (tentativas < 10) {
-        img.style.filter = "grayscale(100%) blur(18px)";
+        img.style.filter = "grayscale(100%) blur(30px)";
         return;
     }
 
@@ -173,8 +188,8 @@
     const etapas = Math.floor(tentativasApos10 / 2);
 
     // Diminui 20% de grayscale e 2px de blur por etapa
-    const grayscale = Math.max(100 - etapas * 20, 0);
-    const blur = Math.max(8 - etapas * 2, 0);
+    const grayscale = Math.max(100 - etapas * 8, 0);
+    const blur = Math.max(18 - etapas * 1, 6);
 
     img.style.filter = `grayscale(${grayscale}%) blur(${blur}px)`;
 }
@@ -211,6 +226,53 @@ function fecharPopup() {
 }
 
 
+
+    function calcularSimilaridade(carta, resposta) {
+    const similares = [];
+
+    // Primeira letra
+    if (normalizar(carta.name)[0] === normalizar(resposta.name)[0]) {
+        similares.push("✏️");
+    }
+
+    // Elixir
+    if (carta.elixirCost === resposta.elixirCost) {
+        similares.push("⚗️");
+    }
+
+    // Raridade
+    if (carta.rarity === resposta.rarity) {
+        similares.push("💎");
+    }
+
+    return similares;
+}
+
+
+function renderizarTentativas() {
+    const container = document.getElementById("tentativas");
+    container.innerHTML = "";
+
+    // Mais ícones = mais parecido = sobe
+    cartasTentadas.sort((a, b) => b.score - a.score);
+
+    cartasTentadas.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("linha");
+
+        const icones = item.similares.join("");
+
+        div.innerHTML = `
+            <span class="nome-carta">${item.carta.name}</span>
+            <span class="icones">${icones}</span>
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+
+    
 
     </script>
 
