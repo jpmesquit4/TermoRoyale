@@ -69,7 +69,9 @@
         function normalizar(str) {
             return str.normalize("NFD")        // separa letras dos acentos
                     .replace(/[\u0300-\u036f]/g, "") // remove acentos
-                    .toLowerCase();
+                    .replace(/\./g, "") 
+                    .toLowerCase()
+                    .trim();
         }
 
 
@@ -95,7 +97,18 @@
 
             if (!nome) return;
 
-            const carta = allCards.items.find(c => normalizar(c.name) === normalizar(nome));
+            const nomeNormalizado = normalizar(nome);
+
+            const carta = allCards.items.find(c => {
+                const nomeCarta = normalizar(c.name);
+
+                // Caso especial: O Tronco
+                if (nomeCarta === "o tronco" && nomeNormalizado === "tronco") {
+                    return true;
+                }
+
+                return nomeCarta === nomeNormalizado;
+            });
 
 
             // ⛔ Se não encontrar carta, não deixa continuar
