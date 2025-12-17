@@ -120,6 +120,17 @@
                 return;
             }
 
+            const jaTentada = cartasTentadas.some(item => item.carta.id === carta.id);
+
+            if (jaTentada) {
+                mostrarPopup(
+                    "Carta repetida",
+                    "Você já tentou essa carta. Escolha outra.",
+                    "erro"
+                );
+                return;
+            }
+                
             registrarTentativa(carta);
             document.getElementById("nomeCarta").value = "";
         }
